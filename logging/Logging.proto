@@ -1,0 +1,158 @@
+syntax = "proto3";
+package Logging.Host.GRPC;
+import "google/protobuf/wrappers.proto";
+
+service ProtoServiceILoggingApplication {
+	rpc Register (ProtoSingleInputMessageLoggingRegisterDTO) returns (ProtoSingleOutputMessageVoidDTO);
+	rpc RegisterBulk (ProtoMultipleInputMessageLoggingRegisterDTO) returns (ProtoSingleOutputMessageVoidDTO);
+	rpc SendRegisterOperation (ProtoSingleInputMessageLoggingRegisterListDTO) returns (ProtoSingleOutputMessageVoidDTO);
+	rpc GetStatus (ProtoSingleInputMessageGetStatusInputDTO) returns (ProtoSingleOutputMessageGetStatusOutputDTO);
+	rpc SetConfigurations (ProtoSingleInputMessageSetConfigurationsInputDTO) returns (ProtoSingleOutputMessageVoidDTO);
+	rpc GetConfigurations (ProtoSingleInputMessageVoidDTO) returns (ProtoSingleOutputMessageGetConfigurationsOutputDTO);
+}
+
+message ProtoSingleInputMessageLoggingRegisterDTO {
+	ProtoInputMetadata Metadata = 1;
+	ProtoLoggingRegisterDTO Data = 2;
+}
+
+message ProtoInputMetadata {
+	google.protobuf.StringValue ClientAuthenticationValue = 1;
+	google.protobuf.StringValue UserAuthenticationValue = 2;
+	google.protobuf.StringValue DistributedTracingContext = 3;
+	google.protobuf.BoolValue ValidateOnly = 4;
+	google.protobuf.StringValue MessageId = 5;
+	google.protobuf.StringValue MessageCreatorId = 6;
+	google.protobuf.StringValue MessageCreationTimestampUTC = 7;
+	google.protobuf.StringValue CorrelationId = 8;
+}
+
+message ProtoLoggingRegisterDTO {
+	google.protobuf.Int64Value Timestamp = 1;
+	google.protobuf.StringValue TraceId = 2;
+	google.protobuf.StringValue SpanId = 3;
+	google.protobuf.StringValue TraceFlags = 4;
+	google.protobuf.StringValue SeverityText = 5;
+	google.protobuf.Int32Value SeverityNumber = 6;
+	google.protobuf.StringValue Name = 7;
+	google.protobuf.StringValue SourceId = 8;
+	google.protobuf.StringValue SourceName = 9;
+	google.protobuf.StringValue Body = 10;
+	repeated google.protobuf.StringValue Resources = 11;
+	repeated google.protobuf.StringValue Attributes = 12;
+}
+
+message ProtoSingleOutputMessageVoidDTO {
+	ProtoOutputMetadata Metadata = 1;
+	ProtoVoidDTO Data = 2;
+}
+
+message ProtoOutputMetadata {
+	google.protobuf.BoolValue Success = 1;
+	repeated ProtoErrorDTO Errors = 2;
+	google.protobuf.BoolValue HasUnexpectedErrors = 3;
+	google.protobuf.StringValue RequestId = 4;
+	google.protobuf.StringValue ApplicationVersion = 5;
+	google.protobuf.StringValue FrameworkVersion = 6;
+	google.protobuf.StringValue MessageId = 7;
+	google.protobuf.StringValue MessageCreatorId = 8;
+	google.protobuf.StringValue MessageCreationTimestampUTC = 9;
+	google.protobuf.StringValue CorrelationId = 10;
+}
+
+message ProtoErrorDTO {
+	google.protobuf.StringValue Code = 1;
+	google.protobuf.StringValue Message = 2;
+}
+
+message ProtoVoidDTO {
+}
+
+message ProtoMultipleInputMessageLoggingRegisterDTO {
+	ProtoInputMetadata Metadata = 1;
+	repeated ProtoLoggingRegisterDTO Data = 2;
+}
+
+
+
+message ProtoSingleInputMessageLoggingRegisterListDTO {
+	ProtoInputMetadata Metadata = 1;
+	ProtoLoggingRegisterListDTO Data = 2;
+}
+
+
+message ProtoLoggingRegisterListDTO {
+	repeated ProtoLoggingRegisterDTO Items = 1;
+}
+
+
+message ProtoSingleInputMessageGetStatusInputDTO {
+	ProtoInputMetadata Metadata = 1;
+	ProtoGetStatusInputDTO Data = 2;
+}
+
+
+message ProtoGetStatusInputDTO {
+}
+
+message ProtoSingleOutputMessageGetStatusOutputDTO {
+	ProtoOutputMetadata Metadata = 1;
+	ProtoGetStatusOutputDTO Data = 2;
+}
+
+
+message ProtoGetStatusOutputDTO {
+}
+
+message ProtoSingleInputMessageSetConfigurationsInputDTO {
+	ProtoInputMetadata Metadata = 1;
+	ProtoSetConfigurationsInputDTO Data = 2;
+}
+
+
+message ProtoSetConfigurationsInputDTO {
+	ProtoLoggingConfigurationInputDTO Logging = 1;
+	ProtoProviderConfigurationInputDTO DistributedTracing = 2;
+	ProtoProviderConfigurationInputDTO Metrics = 3;
+	ProtoProviderConfigurationInputDTO Profiling = 4;
+}
+
+message ProtoLoggingConfigurationInputDTO {
+	google.protobuf.StringValue MinimumLogLevel = 1;
+	google.protobuf.BoolValue Disabled = 2;
+}
+
+message ProtoProviderConfigurationInputDTO {
+	google.protobuf.BoolValue Disabled = 1;
+}
+
+message ProtoSingleInputMessageVoidDTO {
+	ProtoInputMetadata Metadata = 1;
+	ProtoVoidDTO Data = 2;
+}
+
+
+
+message ProtoSingleOutputMessageGetConfigurationsOutputDTO {
+	ProtoOutputMetadata Metadata = 1;
+	ProtoGetConfigurationsOutputDTO Data = 2;
+}
+
+
+message ProtoGetConfigurationsOutputDTO {
+	ProtoLoggingConfigurationOutputDTO Logging = 1;
+	ProtoProviderConfigurationOutputDTO DistributedTracing = 2;
+	ProtoProviderConfigurationOutputDTO Metrics = 3;
+	ProtoProviderConfigurationOutputDTO Profiling = 4;
+}
+
+message ProtoLoggingConfigurationOutputDTO {
+	google.protobuf.StringValue MinimumLogLevel = 1;
+	google.protobuf.StringValue ProviderName = 2;
+	google.protobuf.BoolValue Disabled = 3;
+}
+
+message ProtoProviderConfigurationOutputDTO {
+	google.protobuf.StringValue ProviderName = 1;
+	google.protobuf.BoolValue Disabled = 2;
+}
