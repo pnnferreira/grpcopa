@@ -21,35 +21,81 @@ package main
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	pb "grpcopa/comsgrpc"
+	"io/ioutil"
+
 	"log"
 	"net"
 
-	pbLogging "grpcopa/logging"
-
-	decoder "github.com/golang/protobuf/proto"
+	proto "github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	"github.com/jhump/protoreflect/desc"
+	"github.com/jhump/protoreflect/dynamic"
 	"google.golang.org/grpc"
 )
 
 const (
-	port = ":50051"
+	port        = ":50051"
+	pathService = "ProtoServiceILoggingApplication"
+	pathMethod  = "Register"
 )
 
-// server is used to implement helloworld.GreeterServer.
+// server is used to implement
 type server struct {
 	pb.UnimplementedHttpRequestServer
 }
 
-// SayHello implements helloworld.GreeterServer
+// SayHello implements authz
 func (s *server) AuthzService(ctx context.Context, in *pb.Request) (*pb.Reply, error) {
 
-	requestData := &pbLogging.ProtoSingleInputMessageLoggingRegisterDTO{}
-
-	if err := decoder.Unmarshal(in.GetHttpRaw(), requestData); err != nil {
-		log.Fatalln("Failed to parse address book:", err)
+	bytes, err := ioutil.ReadFile("C:/Go/src/grpcopa/logging/Logging.protoset")
+	if err != nil {
+		panic(err)
+	}
+	var fileSet descriptor.FileDescriptorSet
+	if err := proto.Unmarshal(bytes, &fileSet); err != nil {
+		panic(err)
+	}
+	fd, err := desc.CreateFileDescriptorFromSet(&fileSet)
+	if err != nil {
+		panic(err)
 	}
 
-	log.Printf("Received: Message " + requestData.Metadata.ClientAuthenticationValue.Value)
+	var inputType = ""
+	var packageName = fd.GetPackage()
+
+	for _, v := range fd.GetServices() {
+		if v.GetName() == pathService {
+			for _, z := range v.GetMethods() {
+				if z.GetName() == pathMethod {
+					inputType = z.GetInputType().GetName()
+				}
+			}
+		}
+	}
+
+	fmt.Println(packageName)
+	fmt.Println(inputType)
+
+	messageName := fmt.Sprintf("%s.%s", packageName, inputType)
+	//mes := fd.FindMessage("Logging.Host.GRPC.ProtoSingleInputMessageLoggingRegisterDTO")
+
+	mes := fd.FindMessage(messageName)
+
+	dy := dynamic.NewMessage(mes)
+
+	if err := proto.Unmarshal(in.GetHttpRaw(), dy); err != nil {
+		log.Fatalln("Failed to parse:", err)
+	}
+
+	e, err := json.Marshal(dy)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(string(e))
+
 	return &pb.Reply{Message: "Reply HttpRequest "}, nil
 }
 

@@ -1,0 +1,133 @@
+
+˛
+google/protobuf/wrappers.protogoogle.protobuf"#
+DoubleValue
+value (Rvalue""
+
+FloatValue
+value (Rvalue""
+
+Int64Value
+value (Rvalue"#
+UInt64Value
+value (Rvalue""
+
+Int32Value
+value (Rvalue"#
+UInt32Value
+value (Rvalue"!
+	BoolValue
+value (Rvalue"#
+StringValue
+value (	Rvalue""
+
+BytesValue
+value (RvalueB|
+com.google.protobufBWrappersProtoPZ*github.com/golang/protobuf/ptypes/wrappers¯¢GPB™Google.Protobuf.WellKnownTypesbproto3
+›1
+Logging.protoLogging.Host.GRPCgoogle/protobuf/wrappers.proto"Æ
+)ProtoSingleInputMessageLoggingRegisterDTOA
+Metadata (2%.Logging.Host.GRPC.ProtoInputMetadataRMetadata>
+Data (2*.Logging.Host.GRPC.ProtoLoggingRegisterDTORData"é
+ProtoInputMetadataZ
+ClientAuthenticationValue (2.google.protobuf.StringValueRClientAuthenticationValueV
+UserAuthenticationValue (2.google.protobuf.StringValueRUserAuthenticationValueZ
+DistributedTracingContext (2.google.protobuf.StringValueRDistributedTracingContext>
+ValidateOnly (2.google.protobuf.BoolValueRValidateOnly:
+	MessageId (2.google.protobuf.StringValueR	MessageIdH
+MessageCreatorId (2.google.protobuf.StringValueRMessageCreatorId^
+MessageCreationTimestampUTC (2.google.protobuf.StringValueRMessageCreationTimestampUTCB
+CorrelationId (2.google.protobuf.StringValueRCorrelationId"›
+ProtoLoggingRegisterDTO9
+	Timestamp (2.google.protobuf.Int64ValueR	Timestamp6
+TraceId (2.google.protobuf.StringValueRTraceId4
+SpanId (2.google.protobuf.StringValueRSpanId<
+
+TraceFlags (2.google.protobuf.StringValueR
+TraceFlags@
+SeverityText (2.google.protobuf.StringValueRSeverityTextC
+SeverityNumber (2.google.protobuf.Int32ValueRSeverityNumber0
+Name (2.google.protobuf.StringValueRName8
+SourceId (2.google.protobuf.StringValueRSourceId<
+
+SourceName	 (2.google.protobuf.StringValueR
+SourceName0
+Body
+ (2.google.protobuf.StringValueRBody:
+	Resources (2.google.protobuf.StringValueR	Resources<
+
+Attributes (2.google.protobuf.StringValueR
+Attributes"ö
+ProtoSingleOutputMessageVoidDTOB
+Metadata (2&.Logging.Host.GRPC.ProtoOutputMetadataRMetadata3
+Data (2.Logging.Host.GRPC.ProtoVoidDTORData"—
+ProtoOutputMetadata4
+Success (2.google.protobuf.BoolValueRSuccess8
+Errors (2 .Logging.Host.GRPC.ProtoErrorDTORErrorsL
+HasUnexpectedErrors (2.google.protobuf.BoolValueRHasUnexpectedErrors:
+	RequestId (2.google.protobuf.StringValueR	RequestIdL
+ApplicationVersion (2.google.protobuf.StringValueRApplicationVersionH
+FrameworkVersion (2.google.protobuf.StringValueRFrameworkVersion:
+	MessageId (2.google.protobuf.StringValueR	MessageIdH
+MessageCreatorId (2.google.protobuf.StringValueRMessageCreatorId^
+MessageCreationTimestampUTC	 (2.google.protobuf.StringValueRMessageCreationTimestampUTCB
+CorrelationId
+ (2.google.protobuf.StringValueRCorrelationId"y
+ProtoErrorDTO0
+Code (2.google.protobuf.StringValueRCode6
+Message (2.google.protobuf.StringValueRMessage"
+ProtoVoidDTO"∞
++ProtoMultipleInputMessageLoggingRegisterDTOA
+Metadata (2%.Logging.Host.GRPC.ProtoInputMetadataRMetadata>
+Data (2*.Logging.Host.GRPC.ProtoLoggingRegisterDTORData"∂
+-ProtoSingleInputMessageLoggingRegisterListDTOA
+Metadata (2%.Logging.Host.GRPC.ProtoInputMetadataRMetadataB
+Data (2..Logging.Host.GRPC.ProtoLoggingRegisterListDTORData"_
+ProtoLoggingRegisterListDTO@
+Items (2*.Logging.Host.GRPC.ProtoLoggingRegisterDTORItems"¨
+(ProtoSingleInputMessageGetStatusInputDTOA
+Metadata (2%.Logging.Host.GRPC.ProtoInputMetadataRMetadata=
+Data (2).Logging.Host.GRPC.ProtoGetStatusInputDTORData"
+ProtoGetStatusInputDTO"∞
+*ProtoSingleOutputMessageGetStatusOutputDTOB
+Metadata (2&.Logging.Host.GRPC.ProtoOutputMetadataRMetadata>
+Data (2*.Logging.Host.GRPC.ProtoGetStatusOutputDTORData"
+ProtoGetStatusOutputDTO"º
+0ProtoSingleInputMessageSetConfigurationsInputDTOA
+Metadata (2%.Logging.Host.GRPC.ProtoInputMetadataRMetadataE
+Data (21.Logging.Host.GRPC.ProtoSetConfigurationsInputDTORData"˝
+ProtoSetConfigurationsInputDTON
+Logging (24.Logging.Host.GRPC.ProtoLoggingConfigurationInputDTORLogginge
+DistributedTracing (25.Logging.Host.GRPC.ProtoProviderConfigurationInputDTORDistributedTracingO
+Metrics (25.Logging.Host.GRPC.ProtoProviderConfigurationInputDTORMetricsS
+	Profiling (25.Logging.Host.GRPC.ProtoProviderConfigurationInputDTOR	Profiling"£
+!ProtoLoggingConfigurationInputDTOF
+MinimumLogLevel (2.google.protobuf.StringValueRMinimumLogLevel6
+Disabled (2.google.protobuf.BoolValueRDisabled"\
+"ProtoProviderConfigurationInputDTO6
+Disabled (2.google.protobuf.BoolValueRDisabled"ò
+ProtoSingleInputMessageVoidDTOA
+Metadata (2%.Logging.Host.GRPC.ProtoInputMetadataRMetadata3
+Data (2.Logging.Host.GRPC.ProtoVoidDTORData"¿
+2ProtoSingleOutputMessageGetConfigurationsOutputDTOB
+Metadata (2&.Logging.Host.GRPC.ProtoOutputMetadataRMetadataF
+Data (22.Logging.Host.GRPC.ProtoGetConfigurationsOutputDTORData"Ç
+ProtoGetConfigurationsOutputDTOO
+Logging (25.Logging.Host.GRPC.ProtoLoggingConfigurationOutputDTORLoggingf
+DistributedTracing (26.Logging.Host.GRPC.ProtoProviderConfigurationOutputDTORDistributedTracingP
+Metrics (26.Logging.Host.GRPC.ProtoProviderConfigurationOutputDTORMetricsT
+	Profiling (26.Logging.Host.GRPC.ProtoProviderConfigurationOutputDTOR	Profiling"Ê
+"ProtoLoggingConfigurationOutputDTOF
+MinimumLogLevel (2.google.protobuf.StringValueRMinimumLogLevel@
+ProviderName (2.google.protobuf.StringValueRProviderName6
+Disabled (2.google.protobuf.BoolValueRDisabled"ü
+#ProtoProviderConfigurationOutputDTO@
+ProviderName (2.google.protobuf.StringValueRProviderName6
+Disabled (2.google.protobuf.BoolValueRDisabled2›
+ProtoServiceILoggingApplication|
+Register<.Logging.Host.GRPC.ProtoSingleInputMessageLoggingRegisterDTO2.Logging.Host.GRPC.ProtoSingleOutputMessageVoidDTOÇ
+RegisterBulk>.Logging.Host.GRPC.ProtoMultipleInputMessageLoggingRegisterDTO2.Logging.Host.GRPC.ProtoSingleOutputMessageVoidDTOç
+SendRegisterOperation@.Logging.Host.GRPC.ProtoSingleInputMessageLoggingRegisterListDTO2.Logging.Host.GRPC.ProtoSingleOutputMessageVoidDTOá
+	GetStatus;.Logging.Host.GRPC.ProtoSingleInputMessageGetStatusInputDTO=.Logging.Host.GRPC.ProtoSingleOutputMessageGetStatusOutputDTOå
+SetConfigurationsC.Logging.Host.GRPC.ProtoSingleInputMessageSetConfigurationsInputDTO2.Logging.Host.GRPC.ProtoSingleOutputMessageVoidDTOç
+GetConfigurations1.Logging.Host.GRPC.ProtoSingleInputMessageVoidDTOE.Logging.Host.GRPC.ProtoSingleOutputMessageGetConfigurationsOutputDTObproto3
