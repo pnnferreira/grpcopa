@@ -1,4 +1,4 @@
-module example.com/user/hello
+module github.com/pnnferreira/grpcopa
 
 go 1.15
 
