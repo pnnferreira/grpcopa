@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: grpcopa
+  annotations:
+    github.com/project-slug: pnnferreira/grpcopa
+  namespace: default
+spec:
+  type: other
+  lifecycle: unknown
+  owner: Group:default/demo
